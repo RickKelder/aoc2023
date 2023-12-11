@@ -55,7 +55,6 @@ enclosed = []
 for i in range(len(lines)):
     inOutCross = 0
     currentCross = ""
-    print(lines[i])
     for j in range(len(lines[0])):
         if [i, j] not in visited:
             if inOutCross % 2 == 1:
