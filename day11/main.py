@@ -23,14 +23,13 @@ dfGalaxies = pd.DataFrame(galaxies, columns=['x', 'y'])
 emptyX = pd.Series(range(len(lines)))[~pd.Series(range(len(lines))).isin(dfGalaxies['x'])]
 emptyY = pd.Series(range(len(lines)))[~pd.Series(range(len(lines))).isin(dfGalaxies['y'])]
 
-def getManhattanDistanceForGalaxies(dfGalaxyFrame, galaxyLength=1):
-    galaxyLength = galaxyLength-1 if galaxyLength > 1 else galaxyLength
+def getManhattanDistanceForGalaxies(dfGalaxyFrame, galaxyLengthTimesLarger=2):
     dfGalaxyFrame = dfGalaxyFrame.copy()
     xAddition = dfGalaxyFrame['x'] * 0
     for i in emptyX:
         for j in xAddition.index:
             if dfGalaxyFrame['x'][j] > emptyX[i]:
-                xAddition[j] += galaxyLength
+                xAddition[j] += galaxyLengthTimesLarger
 
     dfGalaxyFrame['x'] = dfGalaxyFrame['x']+xAddition
 
@@ -38,7 +37,7 @@ def getManhattanDistanceForGalaxies(dfGalaxyFrame, galaxyLength=1):
     for i in emptyY:
         for j in yAddition.index:
             if dfGalaxies['y'][j] > emptyY[i]:
-                yAddition[j] += galaxyLength
+                yAddition[j] += galaxyLengthTimesLarger
 
     dfGalaxyFrame['y'] = dfGalaxyFrame['y']+yAddition
 
