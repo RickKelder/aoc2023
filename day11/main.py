@@ -29,7 +29,7 @@ def getManhattanDistanceForGalaxies(dfGalaxyFrame, galaxyLengthTimesLarger=2):
     for i in emptyX:
         for j in xAddition.index:
             if dfGalaxyFrame['x'][j] > emptyX[i]:
-                xAddition[j] += galaxyLengthTimesLarger
+                xAddition[j] += galaxyLengthTimesLarger-1
 
     dfGalaxyFrame['x'] = dfGalaxyFrame['x']+xAddition
 
@@ -37,7 +37,7 @@ def getManhattanDistanceForGalaxies(dfGalaxyFrame, galaxyLengthTimesLarger=2):
     for i in emptyY:
         for j in yAddition.index:
             if dfGalaxies['y'][j] > emptyY[i]:
-                yAddition[j] += galaxyLengthTimesLarger
+                yAddition[j] += galaxyLengthTimesLarger-1
 
     dfGalaxyFrame['y'] = dfGalaxyFrame['y']+yAddition
 
